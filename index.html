@@ -4,7 +4,59 @@
 <meta name="description" content="HEX to RGB and RGB to HEX Online">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
-  <title>JS Bin</title>
+  <title>HTML Color Convertor | Jyothi Babu Araja</title>
+  <style>
+    .body{
+  width: 100%;
+  height: 100vh;
+  display: table;
+  text-align: center;
+}
+
+@media (max-width: 720px){
+  .body{
+    padding: 10px;
+  }
+}
+
+.content{
+  width: 300px;
+  vertical-align: middle;
+  margin: 100px auto 0 auto;
+  position: relative;
+}
+
+input {
+  width: 100%;
+  height: 34px;
+  font-size: 28px;
+  padding: 3px;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+button {
+  display: inline;
+  width: 30%;
+  float: right;
+  margin: 10px;
+  height: 40px;
+  padding: 3px;
+  font-size: 28px;
+  border: none;
+  color: white;
+  background: #AA0000;
+}
+
+button:first-of-type{
+  float: left;
+  background: #00AC00;
+}
+
+p{
+  color: red;
+}
+  </style>
 </head>
 <body>
   <div class="body">
@@ -18,4 +70,34 @@
     <p></p>
   </div>
 </body>
+<script>
+var toRGB = document.getElementById("to-rgb");
+var toHEX = document.getElementById("to-hex");
+var rgb = document.getElementById("rgb");
+var hex = document.getElementById("hex");
+var body = document.querySelector(".body");
+var p = document.querySelector("p");
+toRGB.addEventListener("click", function(e){
+  var lHEX = hex.value.trim();
+  if(parseInt(lHEX, 16).toString(16) === lHEX.toLowerCase()){
+    rgb.value = lHEX.match(/.{1,2}/g).map(function(item){
+      return parseInt(item, 16);
+    });
+    body.style.background = "rgb(" + rgb.value + ")";
+  }else{
+    p.innerHTML = "Invalid HEX..!";
+  }
+});
+toHEX.addEventListener("click", function(e){
+  var lRGB = rgb.value.trim();
+  if(lRGB.split(",").every(function(item){return parseInt(item, 10) < 256;})){
+    hex.value = lRGB.split(",").map(function(item){
+      return parseInt(item, 10).toString(16).toUpperCase();
+    }).join("");
+    body.style.background = "#" + hex.value;
+  }else{
+    p.innerHTML = "Invalid RGB..!";
+  }
+});
+</script>
 </html>
