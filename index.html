@@ -76,9 +76,9 @@ p{
       <button id="to-rgb">&mapstodown;</button>
       <button id="to-hex">&mapstoup;</button>
       <input id="rgb" value="255, 255, 255"/>
+        <p></p>
     </div>
     </div>
-    <p></p>
   </div>
 </body>
 <script>
@@ -86,11 +86,11 @@ var toRGB = document.getElementById("to-rgb");
 var toHEX = document.getElementById("to-hex");
 var rgb = document.getElementById("rgb");
 var hex = document.getElementById("hex");
-var body = document.querySelector(".body");
+var body = document.querySelector("body");
 var p = document.querySelector("p");
 toRGB.addEventListener("click", function(e){
   var lHEX = hex.value.trim();
-  if(parseInt(lHEX, 16).toString(16) === lHEX.toLowerCase()){
+  if(lHEX.length <= 6 && parseInt(lHEX, 16).toString(16) === lHEX.toLowerCase()){
     rgb.value = lHEX.match(/.{1,2}/g).map(function(item){
       return parseInt(item, 16);
     });
