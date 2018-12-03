@@ -6,21 +6,22 @@
   <meta name="viewport" content="width=device-width">
   <title>HTML Color Convertor | Jyothi Babu Araja</title>
   <style>
-    .body{
+    body{
+      margin: 0;
+      padding: 0;
   width: 100%;
   height: 100vh;
+    }
+    
+ .body{
   display: table;
   text-align: center;
 }
 
-@media (max-width: 720px){
-  .body{
-    padding: 10px;
-  }
-}
-
 .content{
+  display: table-cell;
   width: 300px;
+  text-align: center;
   vertical-align: middle;
   margin: 100px auto 0 auto;
   position: relative;
@@ -59,8 +60,8 @@ p{
   </style>
 </head>
 <body>
+  <h1>HTML Color Convertor</h1>
   <div class="body">
-    <h1>HTML Color Convertor</h1>
     <div class="content">
       <input id="hex" value="FFFFFF"/>
       <button id="to-rgb">&mapstodown;</button>
